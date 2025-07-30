@@ -21,7 +21,7 @@ inicio
       repita
          escreval("Gênero inválido")
          leia(genero)
-      ate (genero = "M" e "m" e "F" e "f")
+      ate (genero = "M") ou (genero = "m") ou (genero = "F") ou (genero = "f")
 
       escreva("Digite seu salário atual em REAIS: ")
       leia(salario_atual)
@@ -29,24 +29,23 @@ inicio
       leia(anos_trabalho)
       
       //calcula o novo salário
-      se (genero = "F" ou "f") entao
-            salario_novo <- salario_atual + (salario_atual * 0.23)
-         senao
-              se (anos_trabalho >= 15) entao
-                 salario_novo <- salario_atual + (salario_atual * 0.12)
-              senao
-                   salario_novo <- salario_atual + (salario_atual * 0.05)
-         fimse
+      se (genero = "F") e (genero = "f") entao
+            salario_novo <- salario_atual + (salario_atual * (23/100))
       senao
-              se (anos_trabalho > 30) entao
-                 salario_novo <- salario_atual + (salario_atual * 0.25)
+              se (anos_trabalho >= 15) entao
+                 salario_novo <- salario_atual + (salario_atual * (12/100))
               senao
-                   se (anos_trabalhando >= 20) entao
-                      salario_novo <- salario_atual + (salario_atual * 0.13)
-                   senao
-                        salario_novo <- salario_atual + (salario_atual * 0.03)
-                   fimse
+                   salario_novo <- salario_atual + (salario_atual * (5/100))
               fimse
+      fimse
+      se (genero = "M") e (genero = "m") entao
+         salario_novo <- salario_atual + (salario_atual * (25/100))
+      senao
+           se (anos_trabalho >= 20) entao
+              salario_novo <- salario_atual + (salario_atual * (13/100))
+           senao
+                salario_novo <- salario_atual + (salario_atual * (3/100))
+           fimse
       fimse
       
       escreval("Seu novo salário será de R$", salario_novo)
